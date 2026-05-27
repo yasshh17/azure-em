@@ -202,29 +202,35 @@ export default function DashboardPage() {
   const router = useRouter();
   const [data, setData] = useState<DashboardResponse | null>(null);
   const [loading, setLoading] = useState(true);
+  const [warming, setWarming] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
+    const MAX_ATTEMPTS = 10;
+    const RETRY_DELAY_MS = 5000;
 
     (async () => {
       setError(null);
-      for (let attempt = 1; attempt <= 2; attempt++) {
+      for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
         try {
           const result = await fetchDashboard();
           if (cancelled) return;
           setData(result);
+          setWarming(false);
           setError(null);
           setLoading(false);
           return;
         } catch (err) {
           if (cancelled) return;
-          if (attempt === 2) {
+          if (attempt === MAX_ATTEMPTS) {
+            setWarming(false);
             setError("Unable to connect to backend");
             setLoading(false);
             return;
           }
-          await new Promise((r) => setTimeout(r, 1500));
+          setWarming(true);
+          await new Promise((r) => setTimeout(r, RETRY_DELAY_MS));
         }
       }
     })();
@@ -369,6 +375,37 @@ export default function DashboardPage() {
           />
         </motion.div>
 
+        {warming && !error && (
+          <div
+            style={{
+              background: "rgba(212,175,114,0.06)",
+              border: "1px solid rgba(212,175,114,0.25)",
+              color: "#D4AF72",
+              fontSize: 12,
+              padding: "10px 16px",
+              marginBottom: 32,
+              fontFamily: "var(--font-dm-sans)",
+              lineHeight: 1.5,
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
+            }}
+          >
+            <span
+              style={{
+                width: 12,
+                height: 12,
+                borderRadius: "50%",
+                border: "1.5px solid rgba(212,175,114,0.3)",
+                borderTopColor: "#D4AF72",
+                animation: "spin 0.8s linear infinite",
+                display: "inline-block",
+              }}
+            />
+            System warming up, please wait…
+          </div>
+        )}
+
         {error && (
           <div
             style={{
@@ -382,8 +419,7 @@ export default function DashboardPage() {
               lineHeight: 1.5,
             }}
           >
-            Unable to connect to backend. Retrying may resolve this if the
-            server is waking from sleep.
+            Unable to connect to backend.
           </div>
         )}
 
