@@ -851,7 +851,6 @@ Special thanks to **Matias Alem** and **BRG International** for the opportunity 
 
 **🔗 Links:**
 - **Source Code:** [github.com/yasshh17/azure-em](https://github.com/yasshh17/azure-em)
-- **Client:** Matias Alem, CEO, BRG International
 
 ---
 
