@@ -202,13 +202,36 @@ export default function DashboardPage() {
   const router = useRouter();
   const [data, setData] = useState<DashboardResponse | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchDashboard()
-      .then(setData)
-      .catch((e: unknown) => setError(String(e)))
-      .finally(() => setLoading(false));
+    let cancelled = false;
+
+    (async () => {
+      setError(null);
+      for (let attempt = 1; attempt <= 2; attempt++) {
+        try {
+          const result = await fetchDashboard();
+          if (cancelled) return;
+          setData(result);
+          setError(null);
+          setLoading(false);
+          return;
+        } catch (err) {
+          if (cancelled) return;
+          if (attempt === 2) {
+            setError("Unable to connect to backend");
+            setLoading(false);
+            return;
+          }
+          await new Promise((r) => setTimeout(r, 1500));
+        }
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const stats = data?.stats;
@@ -359,11 +382,8 @@ export default function DashboardPage() {
               lineHeight: 1.5,
             }}
           >
-            Unable to connect to EM backend. Make sure{" "}
-            <code style={{ fontFamily: "monospace", opacity: 0.8 }}>
-              uvicorn main:app --reload
-            </code>{" "}
-            is running.
+            Unable to connect to backend. Retrying may resolve this if the
+            server is waking from sleep.
           </div>
         )}
 
