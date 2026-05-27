@@ -667,7 +667,7 @@ npx vercel --prod
 
 **Environment Variables (Vercel dashboard):**
 ```bash
-NEXT_PUBLIC_API_URL=https://azure-em-api.onrender.com
+NEXT_PUBLIC_API_URL=https://azure-em.onrender.com
 ```
 
 ---
@@ -713,7 +713,7 @@ python-3.11
 NEXT_PUBLIC_API_URL=http://localhost:8000
 
 # Production (set in Vercel)
-NEXT_PUBLIC_API_URL=https://azure-em-api.onrender.com
+NEXT_PUBLIC_API_URL=https://azure-em.onrender.com
 ```
 
 **Backend (`.env`):**
