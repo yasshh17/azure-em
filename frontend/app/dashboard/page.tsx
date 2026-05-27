@@ -225,7 +225,7 @@ export default function DashboardPage() {
           if (cancelled) return;
           if (attempt === MAX_ATTEMPTS) {
             setWarming(false);
-            setError("Unable to connect to backend");
+            setError("Backend is taking longer than usual to wake up. Refresh to try again.");
             setLoading(false);
             return;
           }
@@ -419,7 +419,7 @@ export default function DashboardPage() {
               lineHeight: 1.5,
             }}
           >
-            Unable to connect to backend.
+            {error}
           </div>
         )}
 
