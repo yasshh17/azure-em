@@ -1,0 +1,98 @@
+[
+  {
+    "id": "V001",
+    "name": "Arctic Air Systems",
+    "specialty": "HVAC",
+    "contact_name": "Marco Reyes",
+    "phone": "+1-305-555-0201",
+    "email": "dispatch@arcticairsystems.com",
+    "rate_per_hour": 185,
+    "available": true,
+    "rating": 4.9,
+    "response_time_hours": 2
+  },
+  {
+    "id": "V002",
+    "name": "Breezetech HVAC Miami",
+    "specialty": "HVAC",
+    "contact_name": "Sandra Liu",
+    "phone": "+1-305-555-0202",
+    "email": "service@breezetech.com",
+    "rate_per_hour": 165,
+    "available": true,
+    "rating": 4.6,
+    "response_time_hours": 4
+  },
+  {
+    "id": "V003",
+    "name": "Biscayne Plumbing Co.",
+    "specialty": "Plumbing",
+    "contact_name": "Carlos Fuentes",
+    "phone": "+1-305-555-0203",
+    "email": "carlos@biscayneplumbing.com",
+    "rate_per_hour": 145,
+    "available": true,
+    "rating": 4.8,
+    "response_time_hours": 3
+  },
+  {
+    "id": "V004",
+    "name": "Collins Ave Plumbing",
+    "specialty": "Plumbing",
+    "contact_name": "James Ortega",
+    "phone": "+1-305-555-0204",
+    "email": "j.ortega@collinsplumbing.com",
+    "rate_per_hour": 130,
+    "available": false,
+    "rating": 4.2,
+    "response_time_hours": 6
+  },
+  {
+    "id": "V005",
+    "name": "SunState Electric",
+    "specialty": "Electrical",
+    "contact_name": "Diane Marsh",
+    "phone": "+1-305-555-0205",
+    "email": "dispatch@sunstateelectric.com",
+    "rate_per_hour": 175,
+    "available": true,
+    "rating": 4.7,
+    "response_time_hours": 3
+  },
+  {
+    "id": "V006",
+    "name": "Miami Volt Solutions",
+    "specialty": "Electrical",
+    "contact_name": "Tony Perez",
+    "phone": "+1-305-555-0206",
+    "email": "tony@miamivolt.com",
+    "rate_per_hour": 155,
+    "available": false,
+    "rating": 3.8,
+    "response_time_hours": 8
+  },
+  {
+    "id": "V007",
+    "name": "Prestige Building Services",
+    "specialty": "General",
+    "contact_name": "Robert King",
+    "phone": "+1-305-555-0207",
+    "email": "r.king@prestigebuilding.com",
+    "rate_per_hour": 120,
+    "available": true,
+    "rating": 4.5,
+    "response_time_hours": 4
+  },
+  {
+    "id": "V008",
+    "name": "Elite Facilities Group",
+    "specialty": "General",
+    "contact_name": "Maria Castillo",
+    "phone": "+1-305-555-0208",
+    "email": "m.castillo@elitefacilities.com",
+    "rate_per_hour": 110,
+    "available": false,
+    "rating": 4.0,
+    "response_time_hours": 12
+  }
+]

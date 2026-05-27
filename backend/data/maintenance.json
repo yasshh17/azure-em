@@ -1,0 +1,167 @@
+[
+  {
+    "id": "M001",
+    "tenant_id": "T003",
+    "unit": "8A",
+    "category": "HVAC",
+    "description": "AC unit not cooling — unit temperature consistently above 82°F despite thermostat set to 70°F",
+    "priority": "urgent",
+    "status": "open",
+    "created_date": "2026-05-19",
+    "assigned_vendor_id": null
+  },
+  {
+    "id": "M002",
+    "tenant_id": "T014",
+    "unit": "5C",
+    "category": "Plumbing",
+    "description": "Master bath shower drain completely backed up — water not draining at all",
+    "priority": "urgent",
+    "status": "in_progress",
+    "created_date": "2026-05-18",
+    "assigned_vendor_id": "V003"
+  },
+  {
+    "id": "M003",
+    "tenant_id": "T006",
+    "unit": "7A",
+    "category": "Electrical",
+    "description": "Kitchen circuit breaker tripping repeatedly when using oven and microwave simultaneously",
+    "priority": "high",
+    "status": "open",
+    "created_date": "2026-05-17",
+    "assigned_vendor_id": null
+  },
+  {
+    "id": "M004",
+    "tenant_id": "T002",
+    "unit": "PH2",
+    "category": "Appliance",
+    "description": "Sub-Zero refrigerator making loud compressor noise and not maintaining temperature below 45°F",
+    "priority": "high",
+    "status": "in_progress",
+    "created_date": "2026-05-16",
+    "assigned_vendor_id": "V007"
+  },
+  {
+    "id": "M005",
+    "tenant_id": "T011",
+    "unit": "6C",
+    "category": "Plumbing",
+    "description": "Hot water not reaching guest bathroom — water remains cold after running for 10 minutes",
+    "priority": "high",
+    "status": "open",
+    "created_date": "2026-05-15",
+    "assigned_vendor_id": null
+  },
+  {
+    "id": "M006",
+    "tenant_id": "T007",
+    "unit": "7B",
+    "category": "Electrical",
+    "description": "Smart home panel offline — Lutron lighting system and automated shades non-responsive",
+    "priority": "high",
+    "status": "in_progress",
+    "created_date": "2026-05-14",
+    "assigned_vendor_id": "V005"
+  },
+  {
+    "id": "M007",
+    "tenant_id": "T009",
+    "unit": "6A",
+    "category": "HVAC",
+    "description": "Living room air handler producing musty odor — possible mold in condensate drain pan",
+    "priority": "medium",
+    "status": "open",
+    "created_date": "2026-05-12",
+    "assigned_vendor_id": null
+  },
+  {
+    "id": "M008",
+    "tenant_id": "T001",
+    "unit": "PH1",
+    "category": "Concierge",
+    "description": "Private elevator lobby door handle loose and sticking — requires lubrication and hardware tightening",
+    "priority": "medium",
+    "status": "open",
+    "created_date": "2026-05-11",
+    "assigned_vendor_id": null
+  },
+  {
+    "id": "M009",
+    "tenant_id": "T017",
+    "unit": "3A",
+    "category": "Plumbing",
+    "description": "Kitchen faucet dripping at rate of approximately one drop per second when fully closed",
+    "priority": "medium",
+    "status": "in_progress",
+    "created_date": "2026-05-10",
+    "assigned_vendor_id": "V003"
+  },
+  {
+    "id": "M010",
+    "tenant_id": "T010",
+    "unit": "6B",
+    "category": "Appliance",
+    "description": "Washer-dryer unit in laundry closet producing error code E3 and not completing spin cycle",
+    "priority": "medium",
+    "status": "open",
+    "created_date": "2026-05-09",
+    "assigned_vendor_id": null
+  },
+  {
+    "id": "M011",
+    "tenant_id": "T013",
+    "unit": "5B",
+    "category": "Concierge",
+    "description": "Balcony sliding door track misaligned — door difficult to open and does not seal fully when closed",
+    "priority": "medium",
+    "status": "open",
+    "created_date": "2026-05-08",
+    "assigned_vendor_id": null
+  },
+  {
+    "id": "M012",
+    "tenant_id": "T019",
+    "unit": "2A",
+    "category": "Electrical",
+    "description": "Two outlets in the home office not functioning — outlets test dead with no breaker tripped",
+    "priority": "medium",
+    "status": "open",
+    "created_date": "2026-05-07",
+    "assigned_vendor_id": null
+  },
+  {
+    "id": "M013",
+    "tenant_id": "T012",
+    "unit": "5A",
+    "category": "Concierge",
+    "description": "Touch-up paint needed on foyer wall following furniture delivery scuff",
+    "priority": "low",
+    "status": "resolved",
+    "created_date": "2026-05-01",
+    "assigned_vendor_id": "V007"
+  },
+  {
+    "id": "M014",
+    "tenant_id": "T016",
+    "unit": "4B",
+    "category": "Plumbing",
+    "description": "Bathroom exhaust fan running louder than normal — possible bearing wear",
+    "priority": "low",
+    "status": "resolved",
+    "created_date": "2026-04-28",
+    "assigned_vendor_id": "V003"
+  },
+  {
+    "id": "M015",
+    "tenant_id": "T018",
+    "unit": "3B",
+    "category": "Appliance",
+    "description": "Dishwasher leaving residue on glassware — likely hard water mineral buildup in spray arm",
+    "priority": "low",
+    "status": "resolved",
+    "created_date": "2026-04-25",
+    "assigned_vendor_id": "V007"
+  }
+]

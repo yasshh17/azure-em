@@ -1,0 +1,182 @@
+[
+  {
+    "id": "T001",
+    "name": "Matias Carvalho",
+    "unit": "PH1",
+    "email": "m.carvalho@carvalhogroup.com",
+    "phone": "+1-305-555-0101",
+    "move_in_date": "2023-01-15",
+    "status": "active"
+  },
+  {
+    "id": "T002",
+    "name": "Isabella Fontaine",
+    "unit": "PH2",
+    "email": "isabella.fontaine@gmail.com",
+    "phone": "+1-305-555-0102",
+    "move_in_date": "2022-09-01",
+    "status": "active"
+  },
+  {
+    "id": "T003",
+    "name": "James Whitmore",
+    "unit": "8A",
+    "email": "j.whitmore@whitmorecapital.com",
+    "phone": "+1-305-555-0103",
+    "move_in_date": "2023-03-01",
+    "status": "active"
+  },
+  {
+    "id": "T004",
+    "name": "Elena Vasquez",
+    "unit": "8B",
+    "email": "elena.vasquez@miamidesign.com",
+    "phone": "+1-305-555-0104",
+    "move_in_date": "2022-06-15",
+    "status": "active"
+  },
+  {
+    "id": "T005",
+    "name": "Rafael Mendoza",
+    "unit": "8C",
+    "email": "rafael.mendoza@mendozalaw.com",
+    "phone": "+1-305-555-0105",
+    "move_in_date": "2024-01-01",
+    "status": "active"
+  },
+  {
+    "id": "T006",
+    "name": "Viktor Petrov",
+    "unit": "7A",
+    "email": "v.petrov@petroventures.com",
+    "phone": "+1-305-555-0106",
+    "move_in_date": "2023-07-01",
+    "status": "active"
+  },
+  {
+    "id": "T007",
+    "name": "Lauren Chen",
+    "unit": "7B",
+    "email": "lauren.chen@chenarchitects.com",
+    "phone": "+1-305-555-0107",
+    "move_in_date": "2022-11-01",
+    "status": "active"
+  },
+  {
+    "id": "T008",
+    "name": "Sébastien Moreau",
+    "unit": "7C",
+    "email": "s.moreau@moreaufinance.com",
+    "phone": "+1-305-555-0108",
+    "move_in_date": "2023-05-15",
+    "status": "notice_given"
+  },
+  {
+    "id": "T009",
+    "name": "Camila Rocha",
+    "unit": "6A",
+    "email": "camila.rocha@rochacouture.com",
+    "phone": "+1-305-555-0109",
+    "move_in_date": "2024-03-01",
+    "status": "active"
+  },
+  {
+    "id": "T010",
+    "name": "Tyler Harrington",
+    "unit": "6B",
+    "email": "tyler.harrington@gmail.com",
+    "phone": "+1-305-555-0110",
+    "move_in_date": "2023-08-01",
+    "status": "active"
+  },
+  {
+    "id": "T011",
+    "name": "Valentina Russo",
+    "unit": "6C",
+    "email": "v.russo@russomedical.com",
+    "phone": "+1-305-555-0111",
+    "move_in_date": "2022-04-01",
+    "status": "active"
+  },
+  {
+    "id": "T012",
+    "name": "André Dubois",
+    "unit": "5A",
+    "email": "andre.dubois@duboisgallery.com",
+    "phone": "+1-305-555-0112",
+    "move_in_date": "2023-10-01",
+    "status": "active"
+  },
+  {
+    "id": "T013",
+    "name": "Natasha Ivanova",
+    "unit": "5B",
+    "email": "n.ivanova@ivanovainteriors.com",
+    "phone": "+1-305-555-0113",
+    "move_in_date": "2024-02-01",
+    "status": "active"
+  },
+  {
+    "id": "T014",
+    "name": "Marcus Webb",
+    "unit": "5C",
+    "email": "marcus.webb@webbtech.io",
+    "phone": "+1-305-555-0114",
+    "move_in_date": "2022-12-01",
+    "status": "delinquent"
+  },
+  {
+    "id": "T015",
+    "name": "Gabriela Santos",
+    "unit": "4A",
+    "email": "g.santos@santosconsulting.com",
+    "phone": "+1-305-555-0115",
+    "move_in_date": "2023-04-15",
+    "status": "active"
+  },
+  {
+    "id": "T016",
+    "name": "Oliver Blackwood",
+    "unit": "4B",
+    "email": "o.blackwood@blackwoodgroup.com",
+    "phone": "+1-305-555-0116",
+    "move_in_date": "2022-08-01",
+    "status": "active"
+  },
+  {
+    "id": "T017",
+    "name": "Sophia Delacroix",
+    "unit": "3A",
+    "email": "sophia.delacroix@delacroixpr.com",
+    "phone": "+1-305-555-0117",
+    "move_in_date": "2023-06-01",
+    "status": "active"
+  },
+  {
+    "id": "T018",
+    "name": "Lucas Ferreira",
+    "unit": "3B",
+    "email": "lucas.ferreira@ferreiratrade.com",
+    "phone": "+1-305-555-0118",
+    "move_in_date": "2024-04-01",
+    "status": "active"
+  },
+  {
+    "id": "T019",
+    "name": "Amara Okonkwo",
+    "unit": "2A",
+    "email": "amara.okonkwo@okonkwocorp.com",
+    "phone": "+1-305-555-0119",
+    "move_in_date": "2023-02-01",
+    "status": "active"
+  },
+  {
+    "id": "T020",
+    "name": "Diego Herrera",
+    "unit": "1A",
+    "email": "diego.herrera@herreraventures.com",
+    "phone": "+1-305-555-0120",
+    "move_in_date": "2022-10-01",
+    "status": "notice_given"
+  }
+]

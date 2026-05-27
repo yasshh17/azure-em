@@ -1,0 +1,182 @@
+[
+  {
+    "id": "L001",
+    "tenant_id": "T001",
+    "unit": "PH1",
+    "monthly_rent": 28000,
+    "start_date": "2023-01-15",
+    "end_date": "2027-01-14",
+    "status": "active"
+  },
+  {
+    "id": "L002",
+    "tenant_id": "T002",
+    "unit": "PH2",
+    "monthly_rent": 26500,
+    "start_date": "2022-09-01",
+    "end_date": "2026-08-31",
+    "status": "active"
+  },
+  {
+    "id": "L003",
+    "tenant_id": "T003",
+    "unit": "8A",
+    "monthly_rent": 18500,
+    "start_date": "2023-03-01",
+    "end_date": "2026-06-10",
+    "status": "active"
+  },
+  {
+    "id": "L004",
+    "tenant_id": "T004",
+    "unit": "8B",
+    "monthly_rent": 17000,
+    "start_date": "2022-06-15",
+    "end_date": "2026-06-14",
+    "status": "active"
+  },
+  {
+    "id": "L005",
+    "tenant_id": "T005",
+    "unit": "8C",
+    "monthly_rent": 17500,
+    "start_date": "2024-01-01",
+    "end_date": "2027-12-31",
+    "status": "active"
+  },
+  {
+    "id": "L006",
+    "tenant_id": "T006",
+    "unit": "7A",
+    "monthly_rent": 15000,
+    "start_date": "2023-07-01",
+    "end_date": "2026-05-31",
+    "status": "active"
+  },
+  {
+    "id": "L007",
+    "tenant_id": "T007",
+    "unit": "7B",
+    "monthly_rent": 14500,
+    "start_date": "2022-11-01",
+    "end_date": "2026-10-31",
+    "status": "active"
+  },
+  {
+    "id": "L008",
+    "tenant_id": "T008",
+    "unit": "7C",
+    "monthly_rent": 14000,
+    "start_date": "2023-05-15",
+    "end_date": "2026-07-05",
+    "status": "active"
+  },
+  {
+    "id": "L009",
+    "tenant_id": "T009",
+    "unit": "6A",
+    "monthly_rent": 13500,
+    "start_date": "2024-03-01",
+    "end_date": "2027-02-28",
+    "status": "active"
+  },
+  {
+    "id": "L010",
+    "tenant_id": "T010",
+    "unit": "6B",
+    "monthly_rent": 13000,
+    "start_date": "2023-08-01",
+    "end_date": "2026-07-15",
+    "status": "active"
+  },
+  {
+    "id": "L011",
+    "tenant_id": "T011",
+    "unit": "6C",
+    "monthly_rent": 12500,
+    "start_date": "2022-04-01",
+    "end_date": "2026-09-30",
+    "status": "active"
+  },
+  {
+    "id": "L012",
+    "tenant_id": "T012",
+    "unit": "5A",
+    "monthly_rent": 12000,
+    "start_date": "2023-10-01",
+    "end_date": "2026-09-30",
+    "status": "active"
+  },
+  {
+    "id": "L013",
+    "tenant_id": "T013",
+    "unit": "5B",
+    "monthly_rent": 11500,
+    "start_date": "2024-02-01",
+    "end_date": "2027-01-31",
+    "status": "active"
+  },
+  {
+    "id": "L014",
+    "tenant_id": "T014",
+    "unit": "5C",
+    "monthly_rent": 11000,
+    "start_date": "2022-12-01",
+    "end_date": "2026-11-30",
+    "status": "active"
+  },
+  {
+    "id": "L015",
+    "tenant_id": "T015",
+    "unit": "4A",
+    "monthly_rent": 10500,
+    "start_date": "2023-04-15",
+    "end_date": "2026-04-30",
+    "status": "expired"
+  },
+  {
+    "id": "L016",
+    "tenant_id": "T016",
+    "unit": "4B",
+    "monthly_rent": 10000,
+    "start_date": "2022-08-01",
+    "end_date": "2026-03-31",
+    "status": "expired"
+  },
+  {
+    "id": "L017",
+    "tenant_id": "T017",
+    "unit": "3A",
+    "monthly_rent": 9500,
+    "start_date": "2023-06-01",
+    "end_date": "2026-11-30",
+    "status": "active"
+  },
+  {
+    "id": "L018",
+    "tenant_id": "T018",
+    "unit": "3B",
+    "monthly_rent": 9000,
+    "start_date": "2024-04-01",
+    "end_date": "2027-03-31",
+    "status": "active"
+  },
+  {
+    "id": "L019",
+    "tenant_id": "T019",
+    "unit": "2A",
+    "monthly_rent": 9000,
+    "start_date": "2023-02-01",
+    "end_date": "2026-12-31",
+    "status": "active"
+  },
+  {
+    "id": "L020",
+    "tenant_id": "T020",
+    "unit": "1A",
+    "monthly_rent": 8500,
+    "start_date": "2022-10-01",
+    "end_date": "2026-09-30",
+    "status": "active"
+  }
+]
