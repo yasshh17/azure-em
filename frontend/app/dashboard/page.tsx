@@ -276,8 +276,8 @@ export default function DashboardPage() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "0 32px",
         }}
+        className="px-14 lg:px-8"
       >
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <div
@@ -328,14 +328,7 @@ export default function DashboardPage() {
         <span style={{ fontFamily: "var(--font-dm-sans)", fontSize: 9, color: "#6B7A99", letterSpacing: "0.1em" }}>Collins Avenue · Miami Beach</span>
       </div>
 
-      <main
-        style={{
-          paddingTop: 64,
-          paddingBottom: 104,
-          paddingLeft: 288,
-          paddingRight: 48,
-        }}
-      >
+      <main className="pt-12 pb-24 px-4 md:px-8 lg:pt-16 lg:pb-[104px] lg:pl-72 lg:pr-12">
         <motion.div
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -343,9 +336,9 @@ export default function DashboardPage() {
           style={{ marginBottom: 40 }}
         >
           <h1
+            className="text-[28px] md:text-[40px]"
             style={{
               fontFamily: "Georgia, serif",
-              fontSize: 40,
               fontWeight: 200,
               color: "#F0EDE8",
               letterSpacing: "-0.01em",
@@ -424,12 +417,8 @@ export default function DashboardPage() {
         )}
 
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: 16,
-            marginBottom: 40,
-          }}
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4"
+          style={{ marginBottom: 40 }}
         >
           {loading ? (
             [0, 1, 2, 3].map((i) => (
@@ -487,11 +476,9 @@ export default function DashboardPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.5 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-5"
             style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
               alignItems: "start",
-              gap: 20,
               marginBottom: 32,
             }}
           >
@@ -683,7 +670,7 @@ export default function DashboardPage() {
           </motion.div>
         )}
 
-        <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+        <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
           {[
             { label: "LOG MAINTENANCE REQUEST", href: "/chat?prompt=Log+a+maintenance+ticket" },
             { label: "DRAFT RENEWAL EMAIL",      href: "/chat?prompt=Draft+a+renewal+email+for+an+expiring+tenant" },

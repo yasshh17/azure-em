@@ -22,7 +22,7 @@ function LiveClock() {
 
 function TopBar() {
   return (
-    <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: 40, background: "rgba(8,12,20,0.98)", backdropFilter: "blur(8px)", borderBottom: "1px solid rgba(212,175,114,0.12)", zIndex: 50, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 32px" }}>
+    <div className="px-14 lg:px-8" style={{ position: "fixed", top: 0, left: 0, right: 0, height: 40, background: "rgba(8,12,20,0.98)", backdropFilter: "blur(8px)", borderBottom: "1px solid rgba(212,175,114,0.12)", zIndex: 50, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
         <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ADE80", animation: "statusPulse 2s ease-in-out infinite" }} />
         <span style={{ fontFamily: "var(--font-dm-sans)", fontSize: 9, color: "#6B7A99", letterSpacing: "0.15em", textTransform: "uppercase" }}>SYSTEM ONLINE</span>
@@ -130,23 +130,23 @@ export default function SettingsPage() {
       <Sidebar />
 
       <div style={{ position: "absolute", top: 40, bottom: 40, left: 0, right: 0, display: "flex", overflow: "hidden" }}>
-        <div style={{ width: 240, flexShrink: 0 }} />
+        <div className="hidden lg:block" style={{ width: 240, flexShrink: 0 }} />
 
-        <main style={{ flex: 1, overflowY: "auto", background: "#080C14", padding: "40px 48px" }}>
+        <main className="px-4 py-6 md:px-8 md:py-8 lg:px-12 lg:py-10" style={{ flex: 1, overflowY: "auto", background: "#080C14" }}>
 
           <div>
-            <div style={{ fontFamily: "Georgia, serif", fontSize: 36, fontWeight: 200, color: "#F0EDE8", lineHeight: 1 }}>Settings.</div>
+            <div className="text-[26px] md:text-[36px]" style={{ fontFamily: "Georgia, serif", fontWeight: 200, color: "#F0EDE8", lineHeight: 1 }}>Settings.</div>
             <div style={{ fontFamily: "var(--font-dm-sans)", fontSize: 11, color: "#6B7A99", textTransform: "uppercase", letterSpacing: "0.15em", marginTop: 6 }}>Azure Residences — Account & Preferences</div>
           </div>
           <div style={{ height: 1, background: "linear-gradient(90deg,#D4AF72,transparent)", margin: "16px 0 24px" }} />
 
           <motion.div
             initial={{ y: 16, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.1 }}
+            className="flex-col lg:flex-row p-6 lg:p-[32px_36px] gap-6 lg:gap-0"
             style={{
               background: "linear-gradient(135deg, rgba(212,175,114,0.06) 0%, rgba(15,22,35,1) 60%)",
               border: "1px solid #1C2333",
               borderLeft: "3px solid #D4AF72",
-              padding: "32px 36px",
               marginBottom: 20,
               display: "flex",
               justifyContent: "space-between",
@@ -155,9 +155,9 @@ export default function SettingsPage() {
           >
             <div>
               <div style={{ fontFamily: "var(--font-dm-sans)", fontSize: 9, color: "#6B7A99", textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 8 }}>PROPERTY</div>
-              <div style={{ fontFamily: "Georgia, serif", fontSize: 38, fontWeight: 200, color: "#F0EDE8", lineHeight: 1, marginBottom: 6 }}>Azure Residences</div>
+              <div className="text-[28px] md:text-[38px]" style={{ fontFamily: "Georgia, serif", fontWeight: 200, color: "#F0EDE8", lineHeight: 1, marginBottom: 6 }}>Azure Residences</div>
               <div style={{ fontFamily: "var(--font-dm-sans)", fontSize: 13, color: "#6B7A99", marginBottom: 16 }}>Collins Avenue, Miami Beach, FL</div>
-              <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+              <div style={{ display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
                 <span style={{ fontFamily: "var(--font-dm-sans)", fontSize: 11, color: "#6B7A99" }}>Est. 2024</span>
                 <div style={{ width: 1, height: 12, background: "rgba(212,175,114,0.3)" }} />
                 <span style={{ fontFamily: "var(--font-dm-sans)", fontSize: 11, color: "#6B7A99" }}>24 Residences</span>
@@ -166,9 +166,9 @@ export default function SettingsPage() {
               </div>
             </div>
 
-            <div style={{ width: 1, height: 80, background: "rgba(212,175,114,0.12)", alignSelf: "center" }} />
+            <div className="hidden lg:block" style={{ width: 1, height: 80, background: "rgba(212,175,114,0.12)", alignSelf: "center" }} />
 
-            <div style={{ flexShrink: 0, marginLeft: 48, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+            <div className="lg:ml-12" style={{ flexShrink: 0, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
               <div style={{ textAlign: "center" }}>
                 <div style={{ fontFamily: "var(--font-dm-sans)", fontSize: 28, fontWeight: 500, color: "#4ADE80" }}>20</div>
                 <div style={{ fontFamily: "var(--font-dm-sans)", fontSize: 8, color: "#6B7A99", textTransform: "uppercase", marginTop: 4 }}>OCCUPIED</div>
@@ -193,7 +193,7 @@ export default function SettingsPage() {
             style={{ background: "#0F1623", border: "1px solid #1C2333", padding: 24, marginBottom: 20 }}
           >
             <SectionLabel>BUILDING PROFILE</SectionLabel>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", border: "1px solid #1C2333" }}>
+            <div className="grid grid-cols-1 md:grid-cols-2" style={{ border: "1px solid #1C2333" }}>
               {profileCells.map((cell, i) => {
                 const isLastRow = i >= 4;
                 const isRightCol = i % 2 === 1;
@@ -216,7 +216,8 @@ export default function SettingsPage() {
 
           <motion.div
             initial={{ y: 16, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }}
-            style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 20 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-5"
+            style={{ marginBottom: 20 }}
           >
             <div style={{ background: "#0F1623", border: "1px solid #1C2333", padding: 24 }}>
               <SectionLabel>MY ACCOUNT</SectionLabel>
@@ -271,7 +272,7 @@ export default function SettingsPage() {
             style={{ background: "#0F1623", border: "1px solid rgba(248,113,113,0.2)", padding: 24 }}
           >
             <SectionLabel>SESSION</SectionLabel>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
               <div>
                 <div style={{ fontFamily: "var(--font-dm-sans)", fontSize: 14, color: "#F0EDE8", fontWeight: 500 }}>Sign Out</div>
                 <div style={{ fontFamily: "var(--font-dm-sans)", fontSize: 11, color: "#6B7A99", marginTop: 3 }}>You will be returned to the login screen.</div>

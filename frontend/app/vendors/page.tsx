@@ -48,7 +48,7 @@ function LiveClock() {
 
 function TopBar() {
   return (
-    <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: 40, background: "rgba(8,12,20,0.98)", backdropFilter: "blur(8px)", borderBottom: "1px solid rgba(212,175,114,0.12)", zIndex: 50, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 32px" }}>
+    <div className="px-14 lg:px-8" style={{ position: "fixed", top: 0, left: 0, right: 0, height: 40, background: "rgba(8,12,20,0.98)", backdropFilter: "blur(8px)", borderBottom: "1px solid rgba(212,175,114,0.12)", zIndex: 50, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
         <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ADE80", animation: "statusPulse 2s ease-in-out infinite" }} />
         <span style={{ fontFamily: "var(--font-dm-sans)", fontSize: 9, color: "#6B7A99", letterSpacing: "0.15em", textTransform: "uppercase" }}>SYSTEM ONLINE</span>
@@ -108,11 +108,11 @@ export default function VendorsPage() {
       <Sidebar />
 
       <div style={{ position: "absolute", top: 40, bottom: 40, left: 0, right: 0, display: "flex", overflow: "hidden" }}>
-        <div style={{ width: 240, flexShrink: 0 }} />
+        <div className="hidden lg:block" style={{ width: 240, flexShrink: 0 }} />
 
-        <main style={{ flex: 1, overflowY: "auto", background: "#080C14", padding: "40px 48px" }}>
+        <main className="px-4 py-6 md:px-8 md:py-8 lg:px-12 lg:py-10" style={{ flex: 1, overflowY: "auto", background: "#080C14" }}>
           <div style={{ marginBottom: 8 }}>
-            <div style={{ fontFamily: "Georgia, serif", fontSize: 36, fontWeight: 200, color: "#F0EDE8", lineHeight: 1 }}>Vendors.</div>
+            <div className="text-[26px] md:text-[36px]" style={{ fontFamily: "Georgia, serif", fontWeight: 200, color: "#F0EDE8", lineHeight: 1 }}>Vendors.</div>
             <div style={{ fontFamily: "var(--font-dm-sans)", fontSize: 11, color: "#6B7A99", textTransform: "uppercase", letterSpacing: "0.12em", marginTop: 6 }}>Azure Residences — Contractor Network</div>
           </div>
           <div style={{ height: 1, background: "linear-gradient(90deg,#D4AF72,transparent)", marginBottom: 24, marginTop: 16 }} />
@@ -139,14 +139,14 @@ export default function VendorsPage() {
           </div>
 
           {loading ? (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16 }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {Array.from({ length: 6 }).map((_, i) => (
                 <div key={i} className="skeleton" style={{ height: 220, borderRadius: 0 }} />
               ))}
             </div>
           ) : (
             <AnimatePresence mode="wait">
-              <motion.div key={activeSpecialty} style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16 }}>
+              <motion.div key={activeSpecialty} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filtered.map((vendor, i) => {
                   const topColor = SPECIALTY_COLOR[vendor.specialty] ?? "#6B7A99";
                   return (

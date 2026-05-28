@@ -90,8 +90,8 @@ function TopBar() {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "0 32px",
       }}
+      className="px-14 lg:px-8"
     >
       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
         <div
@@ -424,7 +424,7 @@ function UserMessageBubble({ content }: { content: string }) {
           background: "#1C2333",
           borderLeft: "2px solid #D4AF72",
           padding: "12px 16px",
-          maxWidth: "60%",
+          maxWidth: "85%",
           fontFamily: "var(--font-dm-sans)",
           fontSize: 13,
           color: "#F0EDE8",
@@ -564,7 +564,7 @@ export default function ChatPage() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
-      style={{ minHeight: "100vh", background: "#080C14" }}
+      style={{ minHeight: "100dvh", background: "#080C14" }}
     >
       <TopBar />
       <BottomBar />
@@ -581,7 +581,7 @@ export default function ChatPage() {
           overflow: "hidden",
         }}
       >
-        <div style={{ width: 240, flexShrink: 0 }} />
+        <div className="hidden lg:block" style={{ width: 240, flexShrink: 0 }} />
 
         <div
           style={{
@@ -598,11 +598,11 @@ export default function ChatPage() {
             style={{
               flex: 1,
               overflowY: "auto",
-              padding: "24px 32px",
               display: "flex",
               flexDirection: "column",
               gap: 16,
             }}
+            className="px-4 py-4 md:px-6 lg:px-8 lg:py-6"
           >
             <AnimatePresence initial={false}>
               {messages.map((msg) => (
@@ -654,7 +654,7 @@ export default function ChatPage() {
               borderTop: "1px solid #1C2333",
             }}
           >
-            <div style={{ padding: "12px 32px 0", display: "flex", gap: 8, flexWrap: "wrap" }}>
+            <div className="flex flex-nowrap gap-2 overflow-x-auto no-scrollbar lg:flex-wrap px-4 lg:px-8 pt-3">
               {CHIPS.map((chip) => (
                 <button
                   key={chip.label}
@@ -669,6 +669,8 @@ export default function ChatPage() {
                     cursor: "pointer",
                     borderRadius: 0,
                     transition: "all 0.15s",
+                    flexShrink: 0,
+                    whiteSpace: "nowrap",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.borderColor = "#D4AF72";
@@ -684,7 +686,7 @@ export default function ChatPage() {
               ))}
             </div>
 
-            <div style={{ padding: "12px 32px 16px", display: "flex", gap: 12 }}>
+            <div className="flex gap-3 px-4 lg:px-8 pt-3 pb-4">
               <input
                 className="chat-input"
                 type="text"
@@ -724,6 +726,9 @@ export default function ChatPage() {
                   transition: "background 0.2s",
                   display: "flex",
                   alignItems: "center",
+                  justifyContent: "center",
+                  minHeight: 44,
+                  minWidth: 44,
                 }}
                 onMouseEnter={(e) => {
                   if (input.trim() && !isLoading)

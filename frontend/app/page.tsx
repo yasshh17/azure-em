@@ -95,7 +95,8 @@ export default function LoginPage() {
       style={{
         position: "fixed",
         inset: 0,
-        overflow: "hidden",
+        overflowY: "auto",
+        overflowX: "hidden",
         background: "#080C14",
       }}
     >
@@ -229,6 +230,7 @@ export default function LoginPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
+        className="gap-2 md:gap-4 px-3"
         style={{
           position: "fixed",
           bottom: 0,
@@ -242,19 +244,21 @@ export default function LoginPage() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          gap: 16,
+          flexWrap: "wrap",
         }}
       >
-        <span style={{ fontFamily: "var(--font-dm-sans)", fontSize: 9, color: "#6B7A99", letterSpacing: "0.2em", textTransform: "uppercase" }}>
+        <span style={{ fontFamily: "var(--font-dm-sans)", fontSize: 9, color: "#6B7A99", letterSpacing: "0.2em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
           Azure Residences
         </span>
         <Divider />
-        <span style={{ fontFamily: "var(--font-dm-sans)", fontSize: 9, color: "#6B7A99", letterSpacing: "0.15em" }}>
+        <span style={{ fontFamily: "var(--font-dm-sans)", fontSize: 9, color: "#6B7A99", letterSpacing: "0.15em", whiteSpace: "nowrap" }}>
           EST. 2024
         </span>
-        <Divider />
-        <span style={{ fontFamily: "var(--font-dm-sans)", fontSize: 9, color: "#6B7A99", letterSpacing: "0.1em" }}>
-          Collins Avenue · Miami Beach
+        <span className="hidden md:contents">
+          <Divider />
+          <span style={{ fontFamily: "var(--font-dm-sans)", fontSize: 9, color: "#6B7A99", letterSpacing: "0.1em", whiteSpace: "nowrap" }}>
+            Collins Avenue · Miami Beach
+          </span>
         </span>
       </motion.div>
 
@@ -290,13 +294,7 @@ export default function LoginPage() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
-        style={{
-          position: "absolute",
-          bottom: 80,
-          left: 80,
-          width: 360,
-          zIndex: 10,
-        }}
+        className="absolute z-10 left-4 right-4 bottom-16 lg:left-20 lg:right-auto lg:bottom-20 lg:w-[360px]"
       >
         <motion.form
           variants={loginContainer}
@@ -346,9 +344,9 @@ export default function LoginPage() {
 
           <motion.div variants={loginItem} transition={{ duration: 0.5, ease: [0, 0, 0.2, 1] }} style={{ marginBottom: 8 }}>
             <div
+              className="text-[32px] md:text-[42px]"
               style={{
                 fontFamily: "Georgia, serif",
-                fontSize: 42,
                 fontWeight: 200,
                 color: "#F0EDE8",
                 letterSpacing: "0.02em",
@@ -400,12 +398,13 @@ export default function LoginPage() {
                 background: "transparent",
                 border: "none",
                 borderBottom: "1px solid rgba(212,175,114,0.35)",
-                padding: "10px 0",
+                padding: "14px 0",
                 color: "#F0EDE8",
                 fontSize: 13,
                 fontFamily: "var(--font-dm-sans)",
                 outline: "none",
                 transition: "border-color 0.3s ease",
+                minHeight: 44,
               }}
             />
           </motion.div>
@@ -437,12 +436,13 @@ export default function LoginPage() {
                 background: "transparent",
                 border: "none",
                 borderBottom: "1px solid rgba(212,175,114,0.35)",
-                padding: "10px 0",
+                padding: "14px 0",
                 color: "#F0EDE8",
                 fontSize: 13,
                 fontFamily: "var(--font-dm-sans)",
                 outline: "none",
                 transition: "border-color 0.3s ease",
+                minHeight: 44,
               }}
             />
           </motion.div>
@@ -498,6 +498,7 @@ export default function LoginPage() {
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.7 }}
+        className="hidden lg:block"
         style={{
           position: "absolute",
           bottom: 80,

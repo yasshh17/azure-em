@@ -64,7 +64,7 @@ function LiveClock() {
 
 function TopBar() {
   return (
-    <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: 40, background: "rgba(8,12,20,0.98)", backdropFilter: "blur(8px)", borderBottom: "1px solid rgba(212,175,114,0.12)", zIndex: 50, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 32px" }}>
+    <div className="px-14 lg:px-8" style={{ position: "fixed", top: 0, left: 0, right: 0, height: 40, background: "rgba(8,12,20,0.98)", backdropFilter: "blur(8px)", borderBottom: "1px solid rgba(212,175,114,0.12)", zIndex: 50, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
         <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ADE80", animation: "statusPulse 2s ease-in-out infinite" }} />
         <span style={{ fontFamily: "var(--font-dm-sans)", fontSize: 9, color: "#6B7A99", letterSpacing: "0.15em", textTransform: "uppercase" }}>SYSTEM ONLINE</span>
@@ -116,16 +116,16 @@ export default function MaintenancePage() {
       <Sidebar />
 
       <div style={{ position: "absolute", top: 40, bottom: 40, left: 0, right: 0, display: "flex", overflow: "hidden" }}>
-        <div style={{ width: 240, flexShrink: 0 }} />
+        <div className="hidden lg:block" style={{ width: 240, flexShrink: 0 }} />
 
-        <main style={{ flex: 1, overflowY: "auto", background: "#080C14", padding: "40px 48px" }}>
+        <main className="px-4 py-6 md:px-8 md:py-8 lg:px-12 lg:py-10" style={{ flex: 1, overflowY: "auto", background: "#080C14" }}>
           <div style={{ marginBottom: 8 }}>
-            <div style={{ fontFamily: "Georgia, serif", fontSize: 36, fontWeight: 200, color: "#F0EDE8", lineHeight: 1 }}>Maintenance.</div>
+            <div className="text-[26px] md:text-[36px]" style={{ fontFamily: "Georgia, serif", fontWeight: 200, color: "#F0EDE8", lineHeight: 1 }}>Maintenance.</div>
             <div style={{ fontFamily: "var(--font-dm-sans)", fontSize: 11, color: "#6B7A99", textTransform: "uppercase", letterSpacing: "0.12em", marginTop: 6 }}>Azure Residences — Work Orders</div>
           </div>
           <div style={{ height: 1, background: "linear-gradient(90deg,#D4AF72,transparent)", marginBottom: 24, marginTop: 16 }} />
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 12, marginBottom: 24 }}>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3" style={{ marginBottom: 24 }}>
             {[
               { label: "TOTAL", value: counts.total, color: "#F0EDE8" },
               { label: "OPEN", value: counts.open, color: counts.open > 5 ? "#F87171" : "#F59E0B" },
@@ -139,7 +139,7 @@ export default function MaintenancePage() {
             ))}
           </div>
 
-          <div style={{ display: "flex", borderBottom: "1px solid #1C2333", marginBottom: 20 }}>
+          <div className="flex overflow-x-auto no-scrollbar" style={{ borderBottom: "1px solid #1C2333", marginBottom: 20 }}>
             {TABS.map((tab) => (
               <button
                 key={tab.value}
@@ -150,6 +150,9 @@ export default function MaintenancePage() {
                   borderBottom: activeTab === tab.value ? "2px solid #D4AF72" : "2px solid transparent",
                   color: activeTab === tab.value ? "#D4AF72" : "#6B7A99",
                   cursor: "pointer", marginBottom: -1, transition: "color 0.15s",
+                  flexShrink: 0,
+                  whiteSpace: "nowrap",
+                  minHeight: 44,
                 }}
               >
                 {tab.label}
@@ -178,8 +181,8 @@ export default function MaintenancePage() {
                       transition={{ delay: i * 0.05 }}
                       style={{ background: "#0F1623", border: "1px solid #1C2333", borderLeft: `3px solid ${pColor}`, padding: "16px 20px" }}
                     >
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
                           <span style={{ fontFamily: "var(--font-dm-sans)", fontSize: 8, color: pColor, background: pBg, padding: "3px 8px", textTransform: "uppercase", letterSpacing: "0.08em" }}>
                             {ticket.priority}
                           </span>

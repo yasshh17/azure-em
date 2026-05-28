@@ -39,7 +39,7 @@ function LiveClock() {
 
 function TopBar() {
   return (
-    <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: 40, background: "rgba(8,12,20,0.98)", backdropFilter: "blur(8px)", borderBottom: "1px solid rgba(212,175,114,0.12)", zIndex: 50, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 32px" }}>
+    <div className="px-14 lg:px-8" style={{ position: "fixed", top: 0, left: 0, right: 0, height: 40, background: "rgba(8,12,20,0.98)", backdropFilter: "blur(8px)", borderBottom: "1px solid rgba(212,175,114,0.12)", zIndex: 50, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
         <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ADE80", animation: "statusPulse 2s ease-in-out infinite" }} />
         <span style={{ fontFamily: "var(--font-dm-sans)", fontSize: 9, color: "#6B7A99", letterSpacing: "0.15em", textTransform: "uppercase" }}>SYSTEM ONLINE</span>
@@ -89,7 +89,7 @@ function SkeletonRows() {
       {Array.from({ length: 5 }).map((_, i) => (
         <tr key={i}>
           {Array.from({ length: 7 }).map((_, j) => (
-            <td key={j} style={{ padding: "14px 16px", borderBottom: "1px solid #1C2333" }}>
+            <td key={j} className={j === 2 ? "hidden md:table-cell" : ""} style={{ padding: "14px 16px", borderBottom: "1px solid #1C2333" }}>
               <div className="skeleton" style={{ height: 14, width: j === 1 ? 140 : 80, borderRadius: 2 }} />
             </td>
           ))}
@@ -128,16 +128,16 @@ export default function TenantsPage() {
       <Sidebar />
 
       <div style={{ position: "absolute", top: 40, bottom: 40, left: 0, right: 0, display: "flex", overflow: "hidden" }}>
-        <div style={{ width: 240, flexShrink: 0 }} />
+        <div className="hidden lg:block" style={{ width: 240, flexShrink: 0 }} />
 
-        <main style={{ flex: 1, overflowY: "auto", background: "#080C14", padding: "40px 48px" }}>
+        <main className="px-4 py-6 md:px-8 md:py-8 lg:px-12 lg:py-10" style={{ flex: 1, overflowY: "auto", background: "#080C14" }}>
           <div style={{ marginBottom: 8 }}>
-            <div style={{ fontFamily: "Georgia, serif", fontSize: 36, fontWeight: 200, color: "#F0EDE8", lineHeight: 1 }}>Residents.</div>
+            <div className="text-[26px] md:text-[36px]" style={{ fontFamily: "Georgia, serif", fontWeight: 200, color: "#F0EDE8", lineHeight: 1 }}>Residents.</div>
             <div style={{ fontFamily: "var(--font-dm-sans)", fontSize: 11, color: "#6B7A99", textTransform: "uppercase", letterSpacing: "0.12em", marginTop: 6 }}>Azure Residences — 24 Units</div>
           </div>
           <div style={{ height: 1, background: "linear-gradient(90deg,#D4AF72,transparent)", marginBottom: 24, marginTop: 16 }} />
 
-          <div style={{ display: "flex", gap: 12, marginBottom: 20 }}>
+          <div style={{ display: "flex", gap: 12, marginBottom: 20, flexWrap: "wrap" }}>
             {[
               { dot: "#4ADE80", label: `${activeCount} Active` },
               { dot: "#F59E0B", label: `${expiringCount} Expiring` },
@@ -161,11 +161,12 @@ export default function TenantsPage() {
             onBlur={(e) => (e.target.style.borderColor = "#1C2333")}
           />
 
-          <table style={{ width: "100%", borderCollapse: "collapse" }}>
+          <div className="overflow-x-auto -mx-4 md:mx-0">
+          <table style={{ width: "100%", minWidth: 720, borderCollapse: "collapse" }}>
             <thead>
               <tr style={{ background: "#0F1623", borderBottom: "2px solid #1C2333" }}>
                 {["UNIT", "RESIDENT", "EMAIL", "MOVE-IN", "LEASE ENDS", "RENT", "STATUS"].map((h) => (
-                  <th key={h} style={{ fontFamily: "var(--font-dm-sans)", fontSize: 9, color: "#6B7A99", textTransform: "uppercase", letterSpacing: "0.1em", padding: "12px 16px", textAlign: "left", fontWeight: 500 }}>{h}</th>
+                  <th key={h} className={h === "EMAIL" ? "hidden md:table-cell" : ""} style={{ fontFamily: "var(--font-dm-sans)", fontSize: 9, color: "#6B7A99", textTransform: "uppercase", letterSpacing: "0.1em", padding: "12px 16px", textAlign: "left", fontWeight: 500 }}>{h}</th>
                 ))}
               </tr>
             </thead>
@@ -190,7 +191,7 @@ export default function TenantsPage() {
                         <div style={{ fontFamily: "var(--font-dm-sans)", fontSize: 13, color: "#F0EDE8", fontWeight: 500 }}>{t.name}</div>
                         <div style={{ fontFamily: "var(--font-dm-sans)", fontSize: 10, color: "#6B7A99", marginTop: 2 }}>{t.phone}</div>
                       </td>
-                      <td style={{ padding: "14px 16px", fontFamily: "var(--font-dm-sans)", fontSize: 12, color: "#6B7A99" }}>{t.email}</td>
+                      <td className="hidden md:table-cell" style={{ padding: "14px 16px", fontFamily: "var(--font-dm-sans)", fontSize: 12, color: "#6B7A99" }}>{t.email}</td>
                       <td style={{ padding: "14px 16px", fontFamily: "var(--font-dm-sans)", fontSize: 12, color: "#6B7A99" }}>{formatMoveIn(t.move_in_date)}</td>
                       <td style={{ padding: "14px 16px", fontFamily: "var(--font-dm-sans)", fontSize: 12, color: t.lease ? leaseEndColor(t.lease.days_remaining) : "#6B7A99" }}>
                         {t.lease ? formatLeaseEnd(t.lease.end_date) : "—"}
@@ -209,6 +210,7 @@ export default function TenantsPage() {
               )}
             </tbody>
           </table>
+          </div>
 
           {!loading && filtered.length === 0 && (
             <div style={{ textAlign: "center", padding: "48px 0", fontFamily: "var(--font-dm-sans)", fontSize: 13, color: "#6B7A99" }}>
