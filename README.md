@@ -837,8 +837,6 @@ Built with exceptional open-source tools and services:
 - [Vercel](https://vercel.com/) - Frontend Hosting & CDN
 - [Render](https://render.com/) - Backend Hosting
 
-Special thanks to **Matias Alem** and **BRG International** for the opportunity to design and build EM for Azure Residences.
-
 ---
 
 ## Contact
