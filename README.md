@@ -130,7 +130,7 @@ graph TB
     end
 
     subgraph "AI Services"
-        LLM[Claude Sonnet 4<br/>claude-sonnet-4-20250514]
+        LLM[Claude Sonnet 4.6<br/>claude-sonnet-4-6]
         Tools[Five Typed Tools<br/>Read + Write Operations]
     end
 
@@ -264,7 +264,7 @@ azure-em/
   "language": "Python 3.11+",
   "server": "Uvicorn (ASGI server with async support)",
   "ai_provider": "Anthropic Python SDK",
-  "model": "claude-sonnet-4-20250514",
+  "model": "claude-sonnet-4-6",
   "ai_pattern": "Tool use (function calling) — two-call loop",
   "validation": "Pydantic v2",
   "data_layer": "JSON flat files via pathlib.Path",

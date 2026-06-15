@@ -70,14 +70,31 @@ export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [buttonHover, setButtonHover] = useState(false);
 
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
 
-  const rawX = useTransform(mouseX, [0, 1], [12, -12]);
-  const rawY = useTransform(mouseY, [0, 1], [8, -8]);
-  const springX = useSpring(rawX, { stiffness: 40, damping: 20 });
-  const springY = useSpring(rawY, { stiffness: 40, damping: 20 });
+  const rawBgX = useTransform(mouseX, [0, 1], [15, -15]);
+  const rawBgY = useTransform(mouseY, [0, 1], [10, -10]);
+  const springBgX = useSpring(rawBgX, { stiffness: 30, damping: 20 });
+  const springBgY = useSpring(rawBgY, { stiffness: 30, damping: 20 });
+
+  const rawLoginRotX = useTransform(mouseY, [0, 1], [6, -6]);
+  const rawLoginRotY = useTransform(mouseX, [0, 1], [-8, 8]);
+  const loginRotX = useSpring(rawLoginRotX, { stiffness: 150, damping: 25 });
+  const loginRotY = useSpring(rawLoginRotY, { stiffness: 150, damping: 25 });
+
+  const rawStatsRotX = useTransform(mouseY, [0, 1], [9, -9]);
+  const rawStatsRotY = useTransform(mouseX, [0, 1], [-11, 11]);
+  const statsRotX = useSpring(rawStatsRotX, { stiffness: 150, damping: 25 });
+  const statsRotY = useSpring(rawStatsRotY, { stiffness: 150, damping: 25 });
+
+  const loginFilter = useTransform(
+    [loginRotX, loginRotY],
+    ([rx, ry]) =>
+      `drop-shadow(${(ry as number) * -0.5}px ${(rx as number) * 0.5}px 40px rgba(212, 175, 114, 0.15))`
+  );
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     mouseX.set(e.clientX / window.innerWidth);
@@ -106,9 +123,10 @@ export default function LoginPage() {
         transition={{ duration: 1.5 }}
         style={{
           position: "absolute",
-          inset: -24,
-          x: springX,
-          y: springY,
+          inset: -40,
+          x: springBgX,
+          y: springBgY,
+          scale: 1.08,
           overflow: "hidden",
         }}
       >
@@ -180,6 +198,39 @@ export default function LoginPage() {
           top: 0,
         }}
       />
+
+      <motion.div
+        style={{
+          position: "absolute",
+          width: 1,
+          height: "40vh",
+          background: "linear-gradient(to bottom, transparent, rgba(212,175,114,0.15), transparent)",
+          top: "10%",
+          left: "15%",
+          zIndex: 3,
+          pointerEvents: "none",
+          rotate: 15,
+        }}
+        animate={{ opacity: [0.3, 0.6, 0.3], y: [0, -20, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <motion.div
+        style={{
+          position: "absolute",
+          width: 1,
+          height: "40vh",
+          background: "linear-gradient(to bottom, transparent, rgba(212,175,114,0.15), transparent)",
+          top: "20%",
+          right: "18%",
+          zIndex: 3,
+          pointerEvents: "none",
+          rotate: -12,
+        }}
+        animate={{ opacity: [0.3, 0.6, 0.3], y: [0, -20, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+      />
+
 
       <motion.div
         initial={{ opacity: 0, y: -20 }}
@@ -295,13 +346,20 @@ export default function LoginPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
         className="absolute z-10 left-4 right-4 bottom-16 lg:left-20 lg:right-auto lg:bottom-20 lg:w-[360px]"
+        style={{ filter: loginFilter, perspective: "1000px" }}
       >
         <motion.form
           variants={loginContainer}
           initial="hidden"
           animate="visible"
           onSubmit={handleSubmit}
-          style={{ display: "flex", flexDirection: "column" }}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            transformStyle: "preserve-3d",
+            rotateX: loginRotX,
+            rotateY: loginRotY,
+          }}
         >
           <motion.div variants={loginItem} transition={{ duration: 0.5, ease: [0, 0, 0.2, 1] }} style={{ marginBottom: 16 }}>
             <div
@@ -464,14 +522,17 @@ export default function LoginPage() {
                 border: "none",
                 borderRadius: 0,
                 cursor: "pointer",
-                transition: "background 0.2s ease",
+                transition: "background 0.2s ease, box-shadow 0.3s ease",
+                boxShadow: buttonHover ? "0 0 30px rgba(212, 175, 114, 0.4)" : "none",
               }}
-              onMouseEnter={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.background = "#B8962F")
-              }
-              onMouseLeave={(e) =>
-                ((e.currentTarget as HTMLButtonElement).style.background = "#C9A84C")
-              }
+              onMouseEnter={(e) => {
+                setButtonHover(true);
+                (e.currentTarget as HTMLButtonElement).style.background = "#B8962F";
+              }}
+              onMouseLeave={(e) => {
+                setButtonHover(false);
+                (e.currentTarget as HTMLButtonElement).style.background = "#C9A84C";
+              }}
             >
               Sign In
               <span className="sign-in-shimmer" aria-hidden="true" />
@@ -505,6 +566,7 @@ export default function LoginPage() {
           right: 60,
           width: 220,
           zIndex: 10,
+          perspective: "1000px",
         }}
       >
         <motion.div
@@ -516,6 +578,9 @@ export default function LoginPage() {
             border: "1px solid rgba(212,175,114,0.12)",
             borderTop: "1px solid rgba(212,175,114,0.4)",
             padding: "20px 24px",
+            transformStyle: "preserve-3d",
+            rotateX: statsRotX,
+            rotateY: statsRotY,
           }}
         >
           <div

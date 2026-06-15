@@ -142,7 +142,7 @@ async def run_agent(message: str, history: list) -> dict:
 
         response = await asyncio.to_thread(
             client.messages.create,
-            model="claude-sonnet-4-20250514",
+            model="claude-sonnet-4-6",
             max_tokens=2000,
             system=SYSTEM_PROMPT,
             tools=TOOLS,
@@ -171,7 +171,7 @@ async def run_agent(message: str, history: list) -> dict:
 
             response = await asyncio.to_thread(
                 client.messages.create,
-                model="claude-sonnet-4-20250514",
+                model="claude-sonnet-4-6",
                 max_tokens=2000,
                 system=SYSTEM_PROMPT,
                 tools=TOOLS,
