@@ -1,6 +1,6 @@
 <div align="center">
 
-# EM
+# Azure-em
 
 ### Luxury AI Property Management Assistant
 
@@ -40,7 +40,7 @@
 
 ## Overview
 
-**EM** is a production-ready luxury AI property management assistant built for **Azure Residences** — a 24-unit ultra-luxury oceanfront high-rise on Collins Avenue, Miami Beach. EM consolidates tenant records, lease agreements, maintenance tickets, and vendor contacts into a single conversational AI interface powered by Claude.
+**EM** is a property-management assistant prototype built around demo data for **Azure Residences**, a fictional 24-unit oceanfront property. It brings tenant records, lease agreements, maintenance tickets, and vendor contacts into a conversational interface powered by Claude.
 
 ### The Problem
 
@@ -53,16 +53,16 @@ Property managers at ultra-luxury residential buildings spend hours each day con
 ### The Solution
 
 EM implements a **structured tool-use (function calling) pattern** with Claude Sonnet 4 to:
-- **Query relational building data** with zero hallucination through typed Python tools
+- **Retrieve demo building data** through five tools defined with JSON input schemas
 - **Surface action items** before the manager asks for them
 - **Log maintenance tickets** directly from chat with vendor recommendations
 - **Render structured responses** as tables, draft emails, and checklists
-- **Operate as a single operator interface** for all 24 units in the building
+- **Operate as a single demo interface** for the 24 sample units
 
 ### Why EM?
 ```diff
-- Traditional property software: 8 tabs open, 12 spreadsheets, 30-minute lookups
-+ EM: "Which leases expire this month?" → structured table in 2 seconds
+- Property data spread across several records and workflows
++ EM: "Which leases expire this month?" → one structured response
 ```
 
 **Target Users:** Property managers, building operators, luxury real estate executives, and asset managers requiring instant operational intelligence over their portfolio.
@@ -74,8 +74,8 @@ EM implements a **structured tool-use (function calling) pattern** with Claude S
 ### **Conversational Property Intelligence**
 - **Natural language queries** - Ask any question about tenants, leases, maintenance, or vendors
 - **Structured JSON responses** - Every answer rendered as text, tables, draft emails, or action items
-- **Zero hallucination** - Claude is constrained to always call a tool before answering
-- **Two-call agent loop** - First call selects the tool, second call synthesizes the response
+- **Tool-supported answers** - The system prompt instructs Claude to use available tools for operational questions
+- **Iterative tool loop** - The assistant may perform one or more tool-use rounds before producing a final response
 - **Action-oriented output** - EM surfaces what to do next, not just what the data says
 - **Calm authority tone** - Tuned system prompt for executive-grade professional communication
 
@@ -103,7 +103,7 @@ EM implements a **structured tool-use (function calling) pattern** with Claude S
 - **Auto-scroll messages** - Smooth scroll-to-bottom on every new message
 - **Spring animations** - `stiffness: 300`, `damping: 30` on every entering message
 
-### **Five Typed Claude Tools**
+### **Five Structured Claude Tools**
 - **`get_expiring_leases`** - Lookahead by days, sorted by urgency
 - **`get_maintenance_requests`** - Filter by status and priority, sorted urgent → low
 - **`get_vendors`** - Filter by specialty and availability, sorted by rating
@@ -131,7 +131,7 @@ graph TB
 
     subgraph "AI Services"
         LLM[Claude Sonnet 4.6<br/>claude-sonnet-4-6]
-        Tools[Five Typed Tools<br/>Read + Write Operations]
+        Tools[Five Structured Tools<br/>Read + Write Operations]
     end
 
     Client -->|REST API| API
@@ -171,8 +171,8 @@ azure-em/
 │
 └── backend/                     # FastAPI + Python 3.11
     ├── main.py                  # FastAPI entry — routes, CORS, health endpoint
-    ├── agent.py                 # Claude integration — tool defs, two-call loop
-    ├── tools.py                 # Five tool functions — read/write JSON, typed
+    ├── agent.py                 # Claude integration and iterative tool-use loop
+    ├── tools.py                 # Five tool functions for demo JSON data
     ├── models.py                # Pydantic v2 — ChatRequest, ChatResponse, etc.
     ├── requirements.txt         # fastapi, anthropic, uvicorn, pydantic
     ├── .env                     # ANTHROPIC_API_KEY (not committed)
@@ -191,19 +191,19 @@ azure-em/
    ↓
 3. FastAPI validates with Pydantic ChatRequest model
    ↓
-4. agent.py makes first Claude call with tool definitions:
+4. agent.py calls Claude with five structured tool definitions:
    ├─ System prompt: "You are EM, calm authority, always use a tool"
    ├─ User message + conversation history
-   └─ Five tool definitions with typed inputs
+   └─ Five tool definitions with JSON input schemas
    ↓
-5. Claude returns tool_use block (e.g. get_expiring_leases(days=60))
+5. Claude may return one or more tool-use blocks (e.g. get_expiring_leases(days=60))
    ↓
 6. tools.py executes the chosen function:
    ├─ Reads relevant JSON files via pathlib.Path
    ├─ Joins, filters, sorts as specified per tool contract
    └─ Returns typed dict result
    ↓
-7. agent.py makes second Claude call with tool_result appended
+7. agent.py appends tool results and continues the loop until Claude returns a final response or the round limit is reached
    ↓
 8. Claude synthesizes the final structured JSON response:
    ├─ text — always a non-empty summary sentence
@@ -225,16 +225,16 @@ azure-em/
 
 | Decision | Rationale | Trade-off Considered |
 |----------|-----------|---------------------|
-| **Tool Use, not RAG** | Building data is relational and structured — tools return exact records, RAG would hallucinate | RAG considered, rejected for structured data |
-| **Claude Sonnet 4** | State-of-the-art tool use, reliable JSON output, "calm authority" tone | Opus (overkill) vs Haiku (less reliable) |
-| **JSON flat files** | Demo velocity; identical shapes to SQLAlchemy queries — swap in zero changes | PostgreSQL deferred to production phase |
+| **Tool Use, not RAG** | The demo data is structured, so tools can filter explicit records | A retrieval layer may be useful for future unstructured documents |
+| **Claude Sonnet 4** | Supports tool use and structured output for the chat workflow | Model calls add cost and variable latency |
+| **JSON flat files** | Keeps the prototype easy to inspect and run | PostgreSQL and concurrent-write handling remain future work |
 | **FastAPI (async)** | Non-blocking event loop while waiting for Claude API responses | Flask/Django would block on each request |
 | **Next.js App Router** | Industry standard, file-based routing, matches BRG's existing stack | Pages router considered, App Router chosen |
 | **Tailwind only** | No CSS modules, no class name collisions, design tokens in config | Styled Components rejected for runtime cost |
 | **Zustand for state** | One store file, no Redux boilerplate, no reducers, no dispatch | Redux Toolkit rejected as overkill |
 | **No component library** | Hand-built every component — luxury signals through control | shadcn/MUI rejected — too generic |
 | **`border-radius: 0` everywhere** | Sharp corners signal precision; luxury brands avoid rounded friendliness | Soft corners rejected as off-brand |
-| **Two Claude calls per turn** | First selects tool, second synthesizes — clean, deterministic, debuggable | Streaming rejected for structured JSON parsing |
+| **Iterative Claude tool loop** | Supports one or more tool rounds before final synthesis | More variable latency than a fixed call sequence |
 
 ---
 
@@ -265,8 +265,8 @@ azure-em/
   "server": "Uvicorn (ASGI server with async support)",
   "ai_provider": "Anthropic Python SDK",
   "model": "claude-sonnet-4-6",
-  "ai_pattern": "Tool use (function calling) — two-call loop",
-  "validation": "Pydantic v2",
+  "ai_pattern": "Tool use (function calling) — iterative loop",
+  "validation": "Pydantic v2 for chat API request and response models",
   "data_layer": "JSON flat files via pathlib.Path",
   "environment": "python-dotenv",
   "deployment": "Render / Railway (managed Python hosting)"
@@ -289,7 +289,7 @@ azure-em/
 
 - **Frontend Hosting:** Vercel (Next.js optimized, global edge network)
 - **Backend Hosting:** Render (Python/FastAPI with persistent containers)
-- **Database:** JSON flat files (demo) → PostgreSQL (production-ready swap)
+- **Database:** JSON flat files for the demo; PostgreSQL is future work
 - **AI Provider:** Anthropic (Claude Sonnet 4)
 - **Fonts:** Google Fonts via next/font (Cormorant Garamond + DM Sans)
 - **CI/CD:** GitHub → Auto-deploy to Vercel + Render
@@ -563,39 +563,11 @@ Verify backend is running.
 
 ## Performance
 
-### Application Metrics
+The repository does not currently include a reproducible benchmark suite for page-load time, chat latency, or per-turn cost. Performance figures should be added only with a documented environment and repeatable measurement procedure.
 
-| Operation | Target | Measured | Optimization |
-|-----------|--------|----------|--------------|
-| **Time to First Byte** | < 200ms | 165ms | Vercel edge functions |
-| **First Contentful Paint** | < 1.5s | 1.1s | Next.js code splitting |
-| **Time to Interactive** | < 3.0s | 2.2s | Minimal JS bundle, Zustand |
-| **Chat round-trip (cold)** | < 8s | 5.4s | Two Claude calls, async I/O |
-| **Dashboard load** | < 1s | 380ms | Single JSON aggregation pass |
-| **Stat count-up animation** | 1.5s | 1.5s | Framer Motion, GPU-accelerated |
-
-### Optimizations Implemented
-
-**Frontend Performance:**
-- Next.js automatic code splitting by route
-- React Server Components for static layout shells
-- Dynamic imports for heavy chat components
-- Tailwind CSS purging (production bundle ~10KB)
-- Font optimization with next/font/google
-- Zustand selectors prevent unnecessary re-renders
-
-**Backend Performance:**
-- Async/await throughout — non-blocking I/O during Claude API calls
-- Pydantic v2 validation (Rust-backed, fast)
-- JSON file caching at module load (no disk read per request)
-- Minimal middleware stack — CORS only
-- Single-pass dashboard aggregation
-
-**AI Cost Optimization:**
-- Two-call agent loop is deterministic — no wasted iterations
-- gpt-4o-mini-equivalent pricing via Claude Sonnet 4
-- System prompt kept lean (~80 tokens)
-- Typical chat cost: $0.01–0.03 per turn
+**AI execution:**
+- Tool use can take one or more rounds depending on the request
+- Each round uses the same five structured tool definitions
 
 ---
 
@@ -634,12 +606,12 @@ Secure API communication (HTTPS only in production)
 No inline event handlers in markup
 ```
 
-### AI Hallucination Prevention
+### AI Grounding Approach and Limitations
 ```
-System prompt enforces: "Always use a tool before answering"
-Claude is constrained to JSON schema output
-Tool results are authoritative — no parametric fabrication
-Tenant, unit, and lease records always come from data files
+System prompt instructs Claude to use a tool before answering operational questions
+Tool results come from the repository's demo JSON files
+The API validates the final response shape with Pydantic
+Tool use reduces unsupported answers but does not guarantee zero hallucinations
 ```
 
 ---
@@ -728,8 +700,8 @@ ANTHROPIC_API_KEY=sk-ant-...
 
 ### Completed (v1.0 - Current)
 - [x] Three-screen demo flow: login → dashboard → AI chat
-- [x] Five typed Claude tools with read + write operations
-- [x] Two-call agent loop with structured JSON synthesis
+- [x] Five structured Claude tools with read + write operations
+- [x] Iterative tool-use loop with structured JSON synthesis
 - [x] Gold particle animated login screen (pure CSS)
 - [x] Dashboard with count-up stat animations
 - [x] AI chat with table, draft email, and checklist rendering
@@ -741,8 +713,8 @@ ANTHROPIC_API_KEY=sk-ant-...
 - [x] Zustand chat store with welcome message initializer
 - [x] Pydantic v2 typed API contracts
 
-### Production-Ready Next Steps
-- [ ] Swap JSON flat files for PostgreSQL via SQLAlchemy (zero agent changes)
+### Future Production Work
+- [ ] Replace JSON flat files with PostgreSQL via SQLAlchemy
 - [ ] Add Supabase auth — replace mock login with real credentials
 - [ ] Multi-building support — building selector in sidebar
 - [ ] Real-time WebSocket updates for live maintenance feed
@@ -794,7 +766,7 @@ git push origin feat/your-feature-name
 ### Code Quality Standards
 
 - **TypeScript:** Strict mode enabled, no `any` types anywhere
-- **Python:** Full type hints on all functions, Pydantic models for all I/O
+- **Python:** Type hints across the backend; Pydantic models for chat API input and output
 - **Linting:** ESLint (frontend), Ruff (backend)
 - **Design system:** Only colors and fonts defined in CLAUDE.md Section 4
 - **No component libraries:** All components hand-built
